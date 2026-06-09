@@ -174,7 +174,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Success Created Item
+          description: Success Created Item ou Success Created Item Warning
         '400':
           description: Error Bad Request
         '415':
