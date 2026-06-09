@@ -16,7 +16,150 @@ externalDocs:
 servers:
   - url: http://
 paths:
-  /v1/senai/locadora/bebida:
+  /v1/senai/adega/usuario:
+    post:
+      tags:
+        - Usuário
+      summary: Adiciona um novo Usuario
+      description: Adiciona um novo Usuario
+      requestBody:
+        description: JSON contendo os dados do novo USUARIO a ser inserido no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Usuário
+      summary: Lista todos os Usuarios
+      description: Listagem de todos os USUARIOS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UsuarioGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/adega/usuario/:{id}:
+    get:
+      tags:
+        - Usuário
+      summary: Busca um Usuário pelo ID
+      description: Retorna um Usuário pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsuarioGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Usuário
+      summary: Atualiza um usuario pelo ID
+      description: Atualiza um usuário pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar o Usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar um usuário existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (id | dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Usuário
+      summary: Exclui um Usuário pelo ID
+      description: Excluir um Usuário existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do usuário
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/adega/usuario/login:
+    post:
+      tags:
+        - Usuário
+      summary: Fazer login com informações registradas no sistema
+      description: Fazer login
+      requestBody:
+        description: JSON contendo os dados do login do usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioLogin'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '401':
+          description: Error Unauthorized
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/adega/bebida:
     post:
       tags:
         - Bebida
@@ -56,7 +199,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/bebida/:{id}:
+  /v1/senai/adega/bebida/:{id}:
     get:
       tags:
         - Bebida
@@ -135,7 +278,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/categoria:
+  /v1/senai/adega/categoria:
     post:
       tags:
         - Categoria
@@ -175,7 +318,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/categoria/:{id}:
+  /v1/senai/adega/categoria/:{id}:
     get:
       tags:
         - Categoria
@@ -254,7 +397,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/marca:
+  /v1/senai/adega/marca:
     post:
       tags:
         - Marca
@@ -294,7 +437,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/marca/:{id}:
+  /v1/senai/adega/marca/:{id}:
     get:
       tags:
         - Marca
@@ -373,7 +516,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/sabor:
+  /v1/senai/adega/sabor:
     post:
       tags:
         - Sabor
@@ -413,7 +556,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/sabor/:{id}:
+  /v1/senai/adega/sabor/:{id}:
     get:
       tags:
         - Sabor
@@ -492,7 +635,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/caracteristica:
+  /v1/senai/adega/caracteristica:
     post:
       tags:
         - Característica
@@ -532,7 +675,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/caracteristica/:{id}:
+  /v1/senai/adega/caracteristica/:{id}:
     get:
       tags:
         - Característica
@@ -611,7 +754,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/tipo_embalagem:
+  /v1/senai/adega/tipo_embalagem:
     post:
       tags:
         - Tipo de Embalagem
@@ -651,7 +794,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/tipo_embalagem/:{id}:
+  /v1/senai/adega/tipo_embalagem/:{id}:
     get:
       tags:
         - Tipo de Embalagem
@@ -730,7 +873,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/locadora/foto:
+  /v1/senai/adega/foto:
     post:
       tags:
         - Foto
@@ -770,7 +913,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/locadora/foto/:{id}:
+  /v1/senai/adega/foto/:{id}:
     get:
       tags:
         - Foto
@@ -851,6 +994,32 @@ paths:
 
 components:
   schemas:
+    Usuario:
+      required:
+        - nome
+        - email
+        - senha
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Admin
+          description: O número máximo de caracteres é de 30
+          minLength: 4
+          maxLength: 30
+        email:
+          type: string
+          example: admin@gmail.com
+          description: O número máximo de caracteres é de 256
+          minLength: 15
+          maxLength: 256
+        senha:
+          type: string
+          example: admin123
+          description: O número máximo de caracteres é de 70
+          minLength: 6
+          maxLength: 70
+    
     Bebida:
       required:
         - nome
@@ -866,29 +1035,40 @@ components:
         nome:
           type: string
           description: O número máximo de caracteres é de 120
+          minLength: 1
+          maxLength: 120
         litragem:
           type: string
           description: O número máximo de caracteres é de 25
+          minLength: 1
+          maxLength: 25
         valor:
           type: number
           format: double
           example: "999.99"
           description: O número máximo de caracteres é 999 e duas casas decimais (.99)
+          minimum: 0
+          maximum: 999.99
         descricao:
           type: string
           description: O número máximo de caracteres é ilimitado
+          minLength: 1
         id_categoria:
           type: integer
           example: 1
+          minimum: 1
         id_marca:
           type: integer
           example: 3
+          minimum: 1
         id_sabor:
           type: integer
           example: 2
+          minimum: 1
         id_tipo_embalagem:
           type: integer
           example: 2
+          minimum: 1
         caracteristica:
           type: array
           items:
@@ -909,6 +1089,8 @@ components:
           type: string
           example: Refrigerante
           description: O número máximo de caracteres é de 30
+          minLength: 1
+          maxLength: 30
     
     Marca:
       required:
@@ -919,7 +1101,9 @@ components:
           type: string
           example: Coca Cola
           description: O número máximo de caracteres é de 60
-    
+          minLength: 1
+          maxLength: 60
+
     Sabor:
       required:
         - nome_sabor
@@ -929,6 +1113,8 @@ components:
           type: string
           example: Cola
           description: O número máximo de caracteres é de 60
+          minLength: 1
+          maxLength: 60
     
     Caracteristica:
       required:
@@ -939,6 +1125,8 @@ components:
           type: string
           example: Com gás
           description: O número máximo de caracteres é de 25
+          minLength: 1
+          maxLength: 25
     
     TipoEmbalagem:
       required:
@@ -949,6 +1137,8 @@ components:
           type: string
           example: Lata
           description: O número máximo de caracteres é de 40
+          minLength: 1
+          maxLength: 40
     
     Foto:
       required:
@@ -960,11 +1150,32 @@ components:
           type: string
           example: url da foto
           description: O número máximo de caracteres é de 200
+          minLength: 1
+          maxLength: 200
         id_bebida:
           type: integer
           example: 1
 
     # SCHEMAS PARA OS GETS (RELAÇÕES)
+    UsuarioGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome:
+          type: string
+          example: Admin
+          description: O número máximo de caracteres é de 30
+          minLength: 4
+          maxLength: 30
+        email:
+          type: string
+          example: admin@gmail.com
+          description: O número máximo de caracteres é de 256
+          minLength: 15
+          maxLength: 256
+    
     BebidaGet:
       type: object
       properties:
@@ -1090,7 +1301,33 @@ components:
           items:
             $ref: '#/components/schemas/BebidaGet'
 
+    # Login Usuário
+    UsuarioLogin:
+      required:
+        - email
+        - senha
+      type: object
+      properties:
+        email:
+          type: string
+          example: admin@gmail.com
+          description: O número máximo de caracteres é de 256
+          minLength: 15
+          maxLength: 256
+        senha:
+          type: string
+          example: admin123
+          description: O número máximo de caracteres é de 70
+          minLength: 6
+          maxLength: 70
+
   requestBodies: 
+    Usuario:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Usuario'
     Bebida:
       description: Objeto que deve ser enviado no Body das requisicoes
       content:
@@ -1141,6 +1378,13 @@ components:
             $ref: '#/components/schemas/Foto'
 
     # GETS
+    UsuarioGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UsuarioGet'
+
     BebidaGet:
       description: Objeto que deve ser enviado no Body das requisicoes
       content:
@@ -1189,3 +1433,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/FotoGet'
+
+    #Login Usuário
+    UsuarioLogin:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UsuarioLogin'
