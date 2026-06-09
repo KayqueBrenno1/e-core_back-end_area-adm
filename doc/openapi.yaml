@@ -1,0 +1,1191 @@
+openapi: 3.0.3
+info:
+  title: Projeto de Controle de Bebidas - SENAI Jandira
+  description: |-
+   API destinada para controle de bebidas
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: kayquebrennoferreira@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://
+paths:
+  /v1/senai/locadora/bebida:
+    post:
+      tags:
+        - Bebida
+      summary: Adiciona uma nova Bebida
+      description: Adiciona uma nova Bebida
+      requestBody:
+        description: JSON contendo os dados da nova BEBIDA a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bebida'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Bebida
+      summary: Lista todas as Bebidas
+      description: Listagem de todas as BEBIDAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BebidaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/bebida/:{id}:
+    get:
+      tags:
+        - Bebida
+      summary: Busca uma Bebida pelo ID
+      description: Retorna uma Bebida pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Bebida
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BebidaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Bebida
+      summary: Atualiza uma bebida pelo ID
+      description: Atualiza uma bebida pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar a bebida
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar uma bebida existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bebida'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (id | dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Bebida
+      summary: Exclui uma Bebida pelo ID
+      description: Excluir uma Bebida existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da bebida
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/categoria:
+    post:
+      tags:
+        - Categoria
+      summary: Adiciona uma nova Categoria
+      description: Adiciona uma nova Categoria
+      requestBody:
+        description: JSON contendo os dados da nova CATEGORIA a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Categoria
+      summary: Lista todas as Categorias
+      description: Listagem de todas as CATEGORIAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoriaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/categoria/:{id}:
+    get:
+      tags:
+        - Categoria
+      summary: Busca uma Categoria pelo ID
+      description: Retorna uma Categoria pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Categoria
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Categoria
+      summary: Atualiza uma categoria pelo ID
+      description: Atualiza uma categoria pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar a Categoria
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar uma Categoria existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categoria'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (id | dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Categoria
+      summary: Exclui uma Categoria pelo ID
+      description: Excluir uma Categoria existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da categoria
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/marca:
+    post:
+      tags:
+        - Marca
+      summary: Adiciona uma nova Marca
+      description: Adiciona uma nova Marca
+      requestBody:
+        description: JSON contendo os dados da nova MARCA a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Marca'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Marca
+      summary: Lista todas as Marcas
+      description: Listagem de todas as MARCAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarcaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/marca/:{id}:
+    get:
+      tags:
+        - Marca
+      summary: Busca uma Marca pelo ID
+      description: Retorna uma Marca pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Marca
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarcaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Marca
+      summary: Atualiza uma marca pelo ID
+      description: Atualiza uma marca pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar a Marca
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar uma Marca existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Marca'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (ID | Dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Marca
+      summary: Exclui uma Marca pelo ID
+      description: Excluir uma Marca existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da marca
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/sabor:
+    post:
+      tags:
+        - Sabor
+      summary: Adiciona um novo Sabor
+      description: Adiciona um novo Sabor
+      requestBody:
+        description: JSON contendo os dados do novo SABOR a ser inserido no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sabor'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Sabor
+      summary: Lista todos os Sabores
+      description: Listagem de todos os Sabores registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SaborGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/sabor/:{id}:
+    get:
+      tags:
+        - Sabor
+      summary: Busca um Sabor pelo ID
+      description: Retorna um Sabor pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Sabor
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaborGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Sabor
+      summary: Atualiza um Sabor pelo ID
+      description: Atualiza um sabor pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar o SABOR
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar um Sabor existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sabor'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (ID | Dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Sabor
+      summary: Exclui um Sabor pelo ID
+      description: Excluir um sabor existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Sabor
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/caracteristica:
+    post:
+      tags:
+        - Característica
+      summary: Adiciona uma nova Característica
+      description: Adiciona uma nova Característica
+      requestBody:
+        description: JSON contendo os dados da nova CARACTERÍSTICA a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Caracteristica'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Característica
+      summary: Lista todas as Características
+      description: Listagem de todas as Características registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaracteristicaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/caracteristica/:{id}:
+    get:
+      tags:
+        - Característica
+      summary: Busca uma Característica pelo ID
+      description: Retorna uma Característica pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Característica
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaracteristicaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Característica
+      summary: Atualiza uma Característica pelo ID
+      description: Atualiza uma característica pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar a CARACTERÍSTICA
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar uma Característica existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Caracteristica'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (ID | Dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Característica
+      summary: Exclui uma Característica pelo ID
+      description: Excluir uma característica existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Característica
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/tipo_embalagem:
+    post:
+      tags:
+        - Tipo de Embalagem
+      summary: Adiciona um novo Tipo de Embalagem
+      description: Adiciona um novo Tipo de Embalagem
+      requestBody:
+        description: JSON contendo os dados do novo tipo de embalagem a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoEmbalagem'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Tipo de Embalagem
+      summary: Lista todos os Tipo de Embalagem
+      description: Listagem de todos os Tipo de Embalagem registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TipoEmbalagemGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/tipo_embalagem/:{id}:
+    get:
+      tags:
+        - Tipo de Embalagem
+      summary: Busca um Tipo de Embalagem pelo ID
+      description: Retorna um Tipo de Embalagem pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Tipo de Embalagem
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoEmbalagemGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Tipo de Embalagem
+      summary: Atualiza um Tipo de Embalagem pelo ID
+      description: Atualiza um tipo de embalagem pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar o TIPO DE EMBALAGEM
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar um Tipo de Embalagem existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TipoEmbalagem'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (ID | Dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Tipo de Embalagem
+      summary: Exclui um Tipo de Embalagem pelo ID
+      description: Excluir um tipo de embalagem existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Tipo de Embalagem
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+  
+  /v1/senai/locadora/foto:
+    post:
+      tags:
+        - Foto
+      summary: Adiciona uma nova Foto
+      description: Adiciona uma nova Foto
+      requestBody:
+        description: JSON contendo os dados da nova Foto a ser inserida no sistema
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Foto'
+        required: true
+      responses:
+        '201':
+          description: Success Created Item
+        '400':
+          description: Error Bad Request
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error Internal Server (Controller | Model)
+    get:
+      tags:
+        - Foto
+      summary: Lista todas as Fotos
+      description: Listagem de todas as Fotos registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FotoGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/senai/locadora/foto/:{id}:
+    get:
+      tags:
+        - Foto
+      summary: Busca uma Foto pelo ID
+      description: Retorna uma Foto pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Foto
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FotoGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+    put:
+      tags:
+        - Foto
+      summary: Atualiza uma Foto pelo ID
+      description: Atualiza uma foto pelo ID colocando as informações da mesma forma que o POST
+      parameters:
+        - name: id
+          in: path
+          description: ID para atualizar a FOTO
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Dados para atualizar uma Foto existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Foto'
+        required: true
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Error Bad Request (ID | Dados)
+        '404':
+          description: Error Not Found
+        '415':
+          description: Error Content Type
+        '500':
+          description: Error internal server (Controller | Model)    
+    delete:
+      tags:
+        - Foto
+      summary: Exclui uma Foto pelo ID
+      description: Excluir uma foto existente buscando pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Foto
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Success Delete
+        '400':
+          description: Error Bad Request (ID)
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+components:
+  schemas:
+    Bebida:
+      required:
+        - nome
+        - litragem
+        - valor
+        - descricao
+        - id_categoria
+        - id_marca
+        - id_sabor
+        - id_tipo_embalagem
+      type: object
+      properties:
+        nome:
+          type: string
+          description: O número máximo de caracteres é de 120
+        litragem:
+          type: string
+          description: O número máximo de caracteres é de 25
+        valor:
+          type: number
+          format: double
+          example: "999.99"
+          description: O número máximo de caracteres é 999 e duas casas decimais (.99)
+        descricao:
+          type: string
+          description: O número máximo de caracteres é ilimitado
+        id_categoria:
+          type: integer
+          example: 1
+        id_marca:
+          type: integer
+          example: 3
+        id_sabor:
+          type: integer
+          example: 2
+        id_tipo_embalagem:
+          type: integer
+          example: 2
+        caracteristica:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+            example:
+              - id: 1
+              - id: 2
+
+    Categoria:
+      required:
+        - nome_categoria
+      type: object
+      properties:
+        nome_categoria:
+          type: string
+          example: Refrigerante
+          description: O número máximo de caracteres é de 30
+    
+    Marca:
+      required:
+        - nome_marca
+      type: object
+      properties:
+        nome_marca:
+          type: string
+          example: Coca Cola
+          description: O número máximo de caracteres é de 60
+    
+    Sabor:
+      required:
+        - nome_sabor
+      type: object
+      properties:
+        nome_sabor:
+          type: string
+          example: Cola
+          description: O número máximo de caracteres é de 60
+    
+    Caracteristica:
+      required:
+        - nome
+      type: object
+      properties:
+        nome:
+          type: string
+          example: Com gás
+          description: O número máximo de caracteres é de 25
+    
+    TipoEmbalagem:
+      required:
+        - tipo_embalagem
+      type: object
+      properties:
+        tipo_embalagem:
+          type: string
+          example: Lata
+          description: O número máximo de caracteres é de 40
+    
+    Foto:
+      required:
+        - foto
+        - id_bebida
+      type: object
+      properties:
+        foto:
+          type: string
+          example: url da foto
+          description: O número máximo de caracteres é de 200
+        id_bebida:
+          type: integer
+          example: 1
+
+    # SCHEMAS PARA OS GETS (RELAÇÕES)
+    BebidaGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome:
+          type: string
+          example: Coca Cola lata 350ML
+          description: O número máximo de caracteres é de 120
+        litragem:
+          type: string
+          example: 350ML
+          description: O número máximo de caracteres é de 25
+        valor:
+          type: number
+          format: double
+          example: "05.00"
+        descricao:
+          type: string
+          description: O número máximo de caracteres é ilimitado
+        categoria:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoriaGet'
+        marca:
+          type: array
+          items:
+            $ref: '#/components/schemas/MarcaGet'
+        sabor:
+          type: array
+          items:
+            $ref: '#/components/schemas/SaborGet'
+        tipo_embalagem:
+          type: array
+          items:
+            $ref: '#/components/schemas/TipoEmbalagemGet'
+        caracteristica:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              nome:
+                type: string
+          example:
+            - id: 1
+              nome: Com gás
+            - id: 2
+              nome: Sem álcool
+    
+    CategoriaGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome_categoria:
+          type: string
+          example: Refrigerante
+          description: O número máximo de caracteres é de 30
+
+    MarcaGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome_marca:
+          type: string
+          example: Coca Cola
+          description: O número máximo de caracteres é de 60
+    
+    SaborGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome_sabor:
+          type: string
+          example: Cola
+          description: O número máximo de caracteres é de 60
+
+    CaracteristicaGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        nome:
+          type: string
+          example: Com gás
+          description: O número máximo de caracteres é de 25
+
+    TipoEmbalagemGet:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        tipo_embalagem:
+          type: string
+          example: Lata
+          description: O número máximo de caracteres é de 40
+      
+    FotoGet:
+      required:
+        - foto
+        - id_bebida
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        foto:
+          type: string
+          example: url da foto
+          description: O número máximo de caracteres é de 200
+        id_bebida:
+          type: array
+          items:
+            $ref: '#/components/schemas/BebidaGet'
+
+  requestBodies: 
+    Bebida:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Bebida'
+    
+    Categoria:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Categoria'
+    
+    Marca:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Marca'
+    
+    Sabor:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Sabor'
+    
+    Caracteristica:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Caracteristica'
+    
+    TipoEmbalagem:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TipoEmbalagem'
+    
+    Foto:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Foto'
+
+    # GETS
+    BebidaGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BebidaGet'
+    
+    CategoriaGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CategoriaGet'
+    
+    MarcaGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MarcaGet'
+    
+    SaborGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SaborGet'
+    
+    CaracteristicaGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CaracteristicaGet'
+    
+    TipoEmbalagemGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/TipoEmbalagemGet'
+    
+    FotoGet:
+      description: Objeto que deve ser enviado no Body das requisicoes
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FotoGet'
