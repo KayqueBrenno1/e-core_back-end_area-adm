@@ -1024,7 +1024,6 @@ components:
       required:
         - nome
         - litragem
-        - valor
         - descricao
         - id_categoria
         - id_marca
@@ -1079,6 +1078,25 @@ components:
             example:
               - id: 1
               - id: 2
+        foto_embalagem:
+          type: array
+          items:
+            type: object
+            properties:
+              foto:
+                type: string
+              id_tipo_embalagem:
+                type: integer
+              valor:
+                type: number
+                format: double
+            example:
+              - id_foto: 1
+                id_tipo_embalagem: 1
+                valor: 3.50
+              - id_foto: 2
+                id_tipo_embalagem: 2
+                valor: 7.00
 
     Categoria:
       required:
@@ -1227,6 +1245,29 @@ components:
               nome: Com gás
             - id: 2
               nome: Sem álcool
+        foto_embalagem:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              foto:
+                type: string
+              tipo_embalagem:
+                type: string
+              valor:
+                type: number
+                format: double
+            example:
+              - id: 1
+                foto: coca_lata.png
+                tipo_embalagem: Lata
+                valor: 4.50
+              - id: 2
+                foto: coquinha.png
+                tipo_embalagem: Garrafa
+                valor: 3.00
     
     CategoriaGet:
       type: object

@@ -6,7 +6,7 @@ module.exports = {
             host: 'localhost',
             user: 'root', // Substitua pelo seu usuário
             password: 'bcd127', // Substitua pela sua senha
-            database: 'db_e-deliciagelada_ds2t',
+            database: 'db_ecore_deliciagelada_ds2t',
             port: 3306, // Porta padrão do MySQL
 
             // Opcional: Define charset (recomendado para UTF8)
