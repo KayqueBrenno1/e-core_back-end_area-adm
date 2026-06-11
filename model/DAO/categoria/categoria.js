@@ -10,7 +10,7 @@
 const knex = require('knex')
 
 //IMPORT DO ARQUIVO DE CONFIGURAÇÃO PARA ACESSO AO BD
-const knexDataBaseConfig = require('../../database/database_config/knexConfig.js')
+const knexDataBaseConfig = require('../../database_config/knexConfig.js')
 
 //CRIAR A CONEXÃO COM O BANCO DE DADOS CONFORME A CONFIGURAÇÃO
 const knexConection = knex(knexDataBaseConfig.development)
