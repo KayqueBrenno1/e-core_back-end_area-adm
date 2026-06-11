@@ -19,6 +19,18 @@ app.use(cors(corsOptions))
 const saborRouter = require('./routes/sabor.router.js')
 app.use('/v1/delicia-gelada/admin/sabor', cors(), saborRouter)
 
+const marcaRouter = require('./routes/marca.router.js')
+app.use('/v1/delicia-gelada/admin/marca', cors(), marcaRouter)
+
+const categoriaRouter = require('./routes/categoria.router.js')
+app.use('/v1/delicia-gelada/admin/categoria', cors(), categoriaRouter)
+
+const fotoRouter = require('./routes/foto.router.js')
+app.use('/v1/delicia-gelada/admin/foto', cors(), fotoRouter)
+
+const tipoEmbalagemRouter = require('./routes/tipo_embalagem.router.js')
+app.use('/v1/delicia-gelada/admin/tipo_embalagem', cors(), tipoEmbalagemRouter)
+
 //Fazer o start da API
 app.listen(8080, function () {
     console.log('API aguardando novas requisições...')
