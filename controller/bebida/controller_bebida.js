@@ -15,6 +15,7 @@ const bebidaDAO = require('../../model/DAO/bebida/bebida.js')
 const controllerCategoria   = require('../categoria/controller_categoria.js')
 const controllerMarca       = require('../marca/controller_marca.js')
 const controllerSabor       = require('../sabor/controller_sabor.js')
+const controllerBebidaCarac = require('./controller_bebida_caracteristica.js')
 
 const validarDados = async function (bebida) {
     let customMessages = JSON.parse(JSON.stringify(configMessages))
@@ -61,6 +62,19 @@ const inserirNovaBebida = async function (bebida, contentType) {
                 if (result) {
                     bebida.id = result
 
+                    for (let itemBebida of bebida.caracteristica) {
+                        let bebidaCaracteristica = {
+                            "id_bebida": bebida.id,
+                            "id_caracteristica": itemBebida.id
+                        }
+
+                        let resultBebidaCarac = await controllerBebidaCarac
+                                                        .inserirNovaBebidaCarac(bebidaCaracteristica)
+                        
+                        if (!resultBebidaCarac.status)
+                            return customMessages.SUCCESS_CREATED_ITEM_WARNING
+                    }
+
                     customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
                     customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
                     customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
@@ -95,6 +109,23 @@ const atualizarBebida = async function (bebida, id, contentType) {
                     let result = await bebidaDAO.updateBebida(await tratarDados(bebida))
 
                     if (result) {
+                        let resultDeleteCaracts = await controllerBebidaCarac.excluirCaractsIdBebida(bebida.id)
+                        
+                        if (resultDeleteCaracts.status) {
+                            for (let itemBebida of bebida.caracteristica) {
+                                let bebidaCaracteristica = {
+                                    "id_bebida": bebida.id,
+                                    "id_caracteristica": itemBebida.id
+                                }
+
+                                let resultBebidaCarac = await controllerBebidaCarac
+                                                                .inserirNovaBebidaCarac(bebidaCaracteristica)
+                                
+                                if (!resultBebidaCarac.status)
+                                    return customMessages.SUCCESS_CREATED_ITEM_WARNING
+                            }
+                        }
+
                         customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_UPDATE_ITEM.status
                         customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_UPDATE_ITEM.status_code
                         customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_UPDATE_ITEM.message
@@ -147,6 +178,12 @@ const listarBebida = async function () {
 
                         delete bebida.id_sabor
                     }
+
+                    let resultBebidaCarac = await controllerBebidaCarac
+                                                    .buscarCaractsIdBebida(bebida.id)
+
+                    if (resultBebidaCarac.status)
+                        bebida.caracteristica = resultBebidaCarac.response.bebida_caracteristica
                 }
 
                 customMessages.DEFAULT_MESSAGE.status           = customMessages.SUCCESS_RESPONSE.status
@@ -201,6 +238,12 @@ const buscarBebida = async function (id) {
     
                             delete bebida.id_sabor
                         }
+
+                        let resultBebidaCarac = await controllerBebidaCarac
+                                                    .buscarCaractsIdBebida(bebida.id)
+
+                        if (resultBebidaCarac.status)
+                            bebida.caracteristica = resultBebidaCarac.response.bebida_caracteristica
                     }
 
                     customMessages.DEFAULT_MESSAGE.status           = customMessages.SUCCESS_RESPONSE.status
