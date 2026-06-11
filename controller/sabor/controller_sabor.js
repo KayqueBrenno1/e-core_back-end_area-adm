@@ -14,7 +14,7 @@ const saborDAO = require('../../model/DAO/sabor/sabor.js')
 const validarDados = async function (sabor) {
     let customMessages = JSON.parse(JSON.stringify(configMessages))
 
-    if (sabor.nome_sabor == undefined || sabor.nome_sabor == '' || sabor.nome_sabor == null ||  sabor.nome_sabor.length > 60)
+    if (sabor.nome_sabor == undefined || sabor.nome_sabor.length > 60)
         customMessages.ERROR_BAD_REQUEST.field = '[SABOR] INVÁLIDO'
     else 
         return false

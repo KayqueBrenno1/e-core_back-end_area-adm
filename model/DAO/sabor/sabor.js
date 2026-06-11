@@ -21,7 +21,7 @@ const insertSabor = async function (sabor) {
         let sql = `insert into tbl_sabor (
             nome_sabor
         ) values (
-            '${sabor.nome_sabor}' 
+            if('${sabor.nome_sabor}' = '', null, '${sabor.nome_sabor}')
         );`
 
         let result = await knexConection.raw(sql)

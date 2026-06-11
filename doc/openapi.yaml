@@ -1033,7 +1033,6 @@ components:
         - id_categoria
         - id_marca
         - id_sabor
-        - id_tipo_embalagem
       type: object
       properties:
         nome:
@@ -1046,13 +1045,6 @@ components:
           description: O número máximo de caracteres é de 25
           minLength: 1
           maxLength: 25
-        valor:
-          type: number
-          format: double
-          example: "999.99"
-          description: O número máximo de caracteres é 999 e duas casas decimais (.99)
-          minimum: 0
-          maximum: 999.99
         descricao:
           type: string
           description: O número máximo de caracteres é ilimitado
@@ -1066,10 +1058,6 @@ components:
           example: 3
           minimum: 1
         id_sabor:
-          type: integer
-          example: 2
-          minimum: 1
-        id_tipo_embalagem:
           type: integer
           example: 2
           minimum: 1
@@ -1128,8 +1116,6 @@ components:
           maxLength: 60
 
     Sabor:
-      required:
-        - nome_sabor
       type: object
       properties:
         nome_sabor:
@@ -1166,7 +1152,6 @@ components:
     Foto:
       required:
         - foto
-        - id_bebida
       type: object
       properties:
         foto:
@@ -1175,9 +1160,6 @@ components:
           description: O número máximo de caracteres é de 200
           minLength: 1
           maxLength: 200
-        id_bebida:
-          type: integer
-          example: 1
 
     # SCHEMAS PARA OS GETS (RELAÇÕES)
     UsuarioGet:
@@ -1198,6 +1180,9 @@ components:
           description: O número máximo de caracteres é de 256
           minLength: 15
           maxLength: 256
+        jwt:
+          type: string
+          maxLength: 255
     
     BebidaGet:
       type: object
@@ -1213,10 +1198,6 @@ components:
           type: string
           example: 350ML
           description: O número máximo de caracteres é de 25
-        valor:
-          type: number
-          format: double
-          example: "05.00"
         descricao:
           type: string
           description: O número máximo de caracteres é ilimitado
@@ -1232,10 +1213,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SaborGet'
-        tipo_embalagem:
-          type: array
-          items:
-            $ref: '#/components/schemas/TipoEmbalagemGet'
         caracteristica:
           type: array
           items:
@@ -1332,7 +1309,6 @@ components:
     FotoGet:
       required:
         - foto
-        - id_bebida
       type: object
       properties:
         id:
@@ -1342,8 +1318,6 @@ components:
           type: string
           example: url da foto
           description: O número máximo de caracteres é de 200
-        id_bebida:
-          type: array
           items:
             $ref: '#/components/schemas/BebidaGet'
 
