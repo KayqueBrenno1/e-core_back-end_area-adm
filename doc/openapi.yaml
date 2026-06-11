@@ -16,7 +16,7 @@ externalDocs:
 servers:
   - url: http://
 paths:
-  /v1/senai/adega/usuario:
+  /v1/delicia-gelada/admin/usuario:
     post:
       tags:
         - Usuário
@@ -56,7 +56,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/usuario/:{id}:
+  /v1/delicia-gelada/admin/usuario/:{id}:
     get:
       tags:
         - Usuário
@@ -134,7 +134,7 @@ paths:
           description: Error Bad Request (ID)
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/usuario/login:
+  /v1/delicia-gelada/admin/usuario/login:
     post:
       tags:
         - Usuário
@@ -159,7 +159,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/bebida:
+  /v1/delicia-gelada/admin/bebida:
     post:
       tags:
         - Bebida
@@ -199,7 +199,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/bebida/:{id}:
+  /v1/delicia-gelada/admin/bebida/:{id}:
     get:
       tags:
         - Bebida
@@ -278,7 +278,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/categoria:
+  /v1/delicia-gelada/admin/categoria:
     post:
       tags:
         - Categoria
@@ -318,7 +318,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/categoria/:{id}:
+  /v1/delicia-gelada/admin/categoria/:{id}:
     get:
       tags:
         - Categoria
@@ -397,7 +397,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/marca:
+  /v1/delicia-gelada/admin/marca:
     post:
       tags:
         - Marca
@@ -437,7 +437,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/marca/:{id}:
+  /v1/delicia-gelada/admin/marca/:{id}:
     get:
       tags:
         - Marca
@@ -516,7 +516,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/sabor:
+  /v1/delicia-gelada/admin/sabor:
     post:
       tags:
         - Sabor
@@ -556,7 +556,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/sabor/:{id}:
+  /v1/delicia-gelada/admin/sabor/:{id}:
     get:
       tags:
         - Sabor
@@ -635,7 +635,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/caracteristica:
+  /v1/delicia-gelada/admin/caracteristica:
     post:
       tags:
         - Característica
@@ -675,7 +675,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/caracteristica/:{id}:
+  /v1/delicia-gelada/admin/caracteristica/:{id}:
     get:
       tags:
         - Característica
@@ -754,7 +754,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/tipo_embalagem:
+  /v1/delicia-gelada/admin/tipo_embalagem:
     post:
       tags:
         - Tipo de Embalagem
@@ -794,7 +794,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/tipo_embalagem/:{id}:
+  /v1/delicia-gelada/admin/tipo_embalagem/:{id}:
     get:
       tags:
         - Tipo de Embalagem
@@ -873,7 +873,7 @@ paths:
         '500':
           description: Error Internal Server (Controller | Model)
   
-  /v1/senai/adega/foto:
+  /v1/delicia-gelada/admin/foto:
     post:
       tags:
         - Foto
@@ -913,7 +913,7 @@ paths:
           description: Error Not Found
         '500':
           description: Error Internal Server (Controller | Model)
-  /v1/senai/adega/foto/:{id}:
+  /v1/delicia-gelada/admin/foto/:{id}:
     get:
       tags:
         - Foto
