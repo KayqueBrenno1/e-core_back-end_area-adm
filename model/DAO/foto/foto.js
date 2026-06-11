@@ -19,11 +19,9 @@ const knexConection = knex(knexDataBaseConfig.development)
 const insertFoto = async function (foto) {
     try {
         let sql = `insert into tbl_foto (
-            foto,
-            id_bebida
+            foto
         ) values (
             '${foto.foto}',
-            ${foto.id_bebida}
         );`
 
         let result = await knexConection.raw(sql)
@@ -41,8 +39,7 @@ const insertFoto = async function (foto) {
 const updateFoto = async function (foto) {
     try {
         let sql = `update tbl_foto set
-                        foto        = '${foto.foto}',
-                        id_bebida   = ${foto.id_bebida}
+                        foto        = '${foto.foto}'
                     where id = ${foto.id};`
 
         let result = await knexConection.raw(sql)

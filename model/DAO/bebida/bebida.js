@@ -21,21 +21,17 @@ const insertBebida = async function (bebida) {
         let sql = `insert into tbl_bebida (
             nome,
             litragem,
-            valor,
             descricao,
             id_categoria,
             id_marca,
-            id_sabor,
-            id_tipo_embalagem
+            id_sabor
         ) values (
             '${bebida.nome}',
             '${bebida.litragem}',
-            '${bebida.valor}',
             '${bebida.descricao}',
             ${bebida.id_categoria},
             ${bebida.id_marca},
-            ${bebida.id_sabor},
-            ${bebida.id_tipo_embalagem}
+            ${bebida.id_sabor}
         );`
 
         let result = await knexConection.raw(sql)
@@ -56,12 +52,10 @@ const updateBebida = async function (bebida) {
                         
                         nome                = '${bebida.nome}',
                         litragem            = '${bebida.litragem}',
-                        valor               = '${bebida.valor}',
                         descricao           = '${bebida.descricao}',
                         id_categoria        = ${bebida.id_categoria},
                         id_marca            = ${bebida.id_marca},
-                        id_sabor            = ${bebida.id_sabor},
-                        id_tipo_embalagem   = ${bebida.id_tipo_embalagem}
+                        id_sabor            = ${bebida.id_sabor}
 
                     where id = ${bebida.id};`
 

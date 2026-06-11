@@ -993,6 +993,11 @@ paths:
           description: Error Internal Server (Controller | Model)
 
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Usuario:
       required:
