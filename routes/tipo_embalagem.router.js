@@ -12,7 +12,7 @@ router.post('/', bodyParserJSON, async function (request, response) {
     let dados = request.body
     let contentType = request.headers['content-type']
 
-    let result = await controllerTipoEmbalagem.inserirNovaTipoEmbalagem(dados, contentType)
+    let result = await controllerTipoEmbalagem.inserirNovoTipoEmbalagem(dados, contentType)
 
     response.status(result.status_code)
     response.json(result)

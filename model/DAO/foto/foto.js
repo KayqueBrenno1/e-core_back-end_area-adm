@@ -21,7 +21,7 @@ const insertFoto = async function (foto) {
         let sql = `insert into tbl_foto (
             foto
         ) values (
-            '${foto.foto}',
+            '${foto.foto}'
         );`
 
         let result = await knexConection.raw(sql)
