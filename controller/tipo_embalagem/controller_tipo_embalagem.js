@@ -18,6 +18,8 @@ const validarDados = async function (tipoEmbalagem) {
         customMessages.ERROR_BAD_REQUEST.field = '[TIPO DE EMBALAGEM] INVÁLIDO'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (tipoEmbalagem) {

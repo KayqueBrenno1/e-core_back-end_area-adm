@@ -18,6 +18,8 @@ const validarDados = async function (foto) {
         customMessages.ERROR_BAD_REQUEST.field = '[FOTO] INVÁLIDA'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (foto) {

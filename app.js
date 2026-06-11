@@ -16,6 +16,9 @@ const corsOptions = {
 //APLICAR AS CONFIGURAÇÕES DO CORS NO APP (EXPRESS)
 app.use(cors(corsOptions))
 
+const bebidaRouter = require('./routes/bebida.router.js')
+app.use('/v1/delicia-gelada/admin/bebida', cors(), bebidaRouter)
+
 const saborRouter = require('./routes/sabor.router.js')
 app.use('/v1/delicia-gelada/admin/sabor', cors(), saborRouter)
 

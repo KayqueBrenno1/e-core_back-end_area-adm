@@ -18,6 +18,8 @@ const validarDados = async function (categoria) {
         customMessages.ERROR_BAD_REQUEST.field = '[CATEGORIA] INVÁLIDO'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (categoria) {

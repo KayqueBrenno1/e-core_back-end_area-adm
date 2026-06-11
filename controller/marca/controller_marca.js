@@ -18,6 +18,8 @@ const validarDados = async function (marca) {
         customMessages.ERROR_BAD_REQUEST.field = '[MARCA] INVÁLIDO'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (marca) {

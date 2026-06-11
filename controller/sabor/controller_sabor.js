@@ -18,6 +18,8 @@ const validarDados = async function (sabor) {
         customMessages.ERROR_BAD_REQUEST.field = '[SABOR] INVÁLIDO'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (sabor) {

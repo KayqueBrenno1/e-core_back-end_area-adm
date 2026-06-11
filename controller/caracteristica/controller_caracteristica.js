@@ -18,6 +18,8 @@ const validarDados = async function (caracteristica) {
         customMessages.ERROR_BAD_REQUEST.field = '[CARACTERÍSTICA] INVÁLIDO'
     else 
         return false
+
+    return customMessages.ERROR_BAD_REQUEST
 }
 
 const tratarDados = async function (caracteristica) {
