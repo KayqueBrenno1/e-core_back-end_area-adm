@@ -19,7 +19,7 @@ paths:
   /v1/delicia-gelada/admin/usuario:
     post:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Adiciona um novo Usuario
       description: Adiciona um novo Usuario
       requestBody:
@@ -40,7 +40,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Lista todos os Usuarios
       description: Listagem de todos os USUARIOS registrados no sistema
       responses:
@@ -59,7 +59,7 @@ paths:
   /v1/delicia-gelada/admin/usuario/:{id}:
     get:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Busca um Usuário pelo ID
       description: Retorna um Usuário pelo ID
       parameters:
@@ -85,7 +85,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Atualiza um usuario pelo ID
       description: Atualiza um usuário pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -116,7 +116,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Exclui um Usuário pelo ID
       description: Excluir um Usuário existente buscando pelo ID
       parameters:
@@ -137,7 +137,7 @@ paths:
   /v1/delicia-gelada/admin/usuario/login:
     post:
       tags:
-        - Usuário
+        - (Admin) Usuário
       summary: Fazer login com informações registradas no sistema
       description: Fazer login
       requestBody:
@@ -162,7 +162,7 @@ paths:
   /v1/delicia-gelada/admin/bebida:
     post:
       tags:
-        - Bebida
+        - (Admin) Bebida
       summary: Adiciona uma nova Bebida
       description: Adiciona uma nova Bebida
       requestBody:
@@ -183,7 +183,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Bebida
+        - (Admin) Bebida
       summary: Lista todas as Bebidas
       description: Listagem de todas as BEBIDAS registrados no sistema
       responses:
@@ -202,7 +202,7 @@ paths:
   /v1/delicia-gelada/admin/bebida/:{id}:
     get:
       tags:
-        - Bebida
+        - (Admin) Bebida
       summary: Busca uma Bebida pelo ID
       description: Retorna uma Bebida pelo ID
       parameters:
@@ -228,7 +228,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Bebida
+        - (Admin) Bebida
       summary: Atualiza uma bebida pelo ID
       description: Atualiza uma bebida pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -259,7 +259,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Bebida
+        - (Admin) Bebida
       summary: Exclui uma Bebida pelo ID
       description: Excluir uma Bebida existente buscando pelo ID
       parameters:
@@ -281,7 +281,7 @@ paths:
   /v1/delicia-gelada/admin/categoria:
     post:
       tags:
-        - Categoria
+        - (Admin) Categoria
       summary: Adiciona uma nova Categoria
       description: Adiciona uma nova Categoria
       requestBody:
@@ -302,7 +302,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Categoria
+        - (Admin) Categoria
       summary: Lista todas as Categorias
       description: Listagem de todas as CATEGORIAS registrados no sistema
       responses:
@@ -321,7 +321,7 @@ paths:
   /v1/delicia-gelada/admin/categoria/:{id}:
     get:
       tags:
-        - Categoria
+        - (Admin) Categoria
       summary: Busca uma Categoria pelo ID
       description: Retorna uma Categoria pelo ID
       parameters:
@@ -347,7 +347,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Categoria
+        - (Admin) Categoria
       summary: Atualiza uma categoria pelo ID
       description: Atualiza uma categoria pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -378,7 +378,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Categoria
+        - (Admin) Categoria
       summary: Exclui uma Categoria pelo ID
       description: Excluir uma Categoria existente buscando pelo ID
       parameters:
@@ -400,7 +400,7 @@ paths:
   /v1/delicia-gelada/admin/marca:
     post:
       tags:
-        - Marca
+        - (Admin) Marca
       summary: Adiciona uma nova Marca
       description: Adiciona uma nova Marca
       requestBody:
@@ -421,7 +421,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Marca
+        - (Admin) Marca
       summary: Lista todas as Marcas
       description: Listagem de todas as MARCAS registrados no sistema
       responses:
@@ -440,7 +440,7 @@ paths:
   /v1/delicia-gelada/admin/marca/:{id}:
     get:
       tags:
-        - Marca
+        - (Admin) Marca
       summary: Busca uma Marca pelo ID
       description: Retorna uma Marca pelo ID
       parameters:
@@ -466,7 +466,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Marca
+        - (Admin) Marca
       summary: Atualiza uma marca pelo ID
       description: Atualiza uma marca pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -497,7 +497,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Marca
+        - (Admin) Marca
       summary: Exclui uma Marca pelo ID
       description: Excluir uma Marca existente buscando pelo ID
       parameters:
@@ -519,7 +519,7 @@ paths:
   /v1/delicia-gelada/admin/sabor:
     post:
       tags:
-        - Sabor
+        - (Admin) Sabor
       summary: Adiciona um novo Sabor
       description: Adiciona um novo Sabor
       requestBody:
@@ -540,7 +540,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Sabor
+        - (Admin) Sabor
       summary: Lista todos os Sabores
       description: Listagem de todos os Sabores registrados no sistema
       responses:
@@ -559,7 +559,7 @@ paths:
   /v1/delicia-gelada/admin/sabor/:{id}:
     get:
       tags:
-        - Sabor
+        - (Admin) Sabor
       summary: Busca um Sabor pelo ID
       description: Retorna um Sabor pelo ID
       parameters:
@@ -585,7 +585,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Sabor
+        - (Admin) Sabor
       summary: Atualiza um Sabor pelo ID
       description: Atualiza um sabor pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -616,7 +616,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Sabor
+        - (Admin) Sabor
       summary: Exclui um Sabor pelo ID
       description: Excluir um sabor existente buscando pelo ID
       parameters:
@@ -638,7 +638,7 @@ paths:
   /v1/delicia-gelada/admin/caracteristica:
     post:
       tags:
-        - Característica
+        - (Admin) Característica
       summary: Adiciona uma nova Característica
       description: Adiciona uma nova Característica
       requestBody:
@@ -659,7 +659,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Característica
+        - (Admin) Característica
       summary: Lista todas as Características
       description: Listagem de todas as Características registradas no sistema
       responses:
@@ -678,7 +678,7 @@ paths:
   /v1/delicia-gelada/admin/caracteristica/:{id}:
     get:
       tags:
-        - Característica
+        - (Admin) Característica
       summary: Busca uma Característica pelo ID
       description: Retorna uma Característica pelo ID
       parameters:
@@ -704,7 +704,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Característica
+        - (Admin) Característica
       summary: Atualiza uma Característica pelo ID
       description: Atualiza uma característica pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -735,7 +735,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Característica
+        - (Admin) Característica
       summary: Exclui uma Característica pelo ID
       description: Excluir uma característica existente buscando pelo ID
       parameters:
@@ -757,7 +757,7 @@ paths:
   /v1/delicia-gelada/admin/tipo_embalagem:
     post:
       tags:
-        - Tipo de Embalagem
+        - (Admin) Tipo de Embalagem
       summary: Adiciona um novo Tipo de Embalagem
       description: Adiciona um novo Tipo de Embalagem
       requestBody:
@@ -778,7 +778,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Tipo de Embalagem
+        - (Admin) Tipo de Embalagem
       summary: Lista todos os Tipo de Embalagem
       description: Listagem de todos os Tipo de Embalagem registradas no sistema
       responses:
@@ -797,7 +797,7 @@ paths:
   /v1/delicia-gelada/admin/tipo_embalagem/:{id}:
     get:
       tags:
-        - Tipo de Embalagem
+        - (Admin) Tipo de Embalagem
       summary: Busca um Tipo de Embalagem pelo ID
       description: Retorna um Tipo de Embalagem pelo ID
       parameters:
@@ -823,7 +823,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Tipo de Embalagem
+        - (Admin) Tipo de Embalagem
       summary: Atualiza um Tipo de Embalagem pelo ID
       description: Atualiza um tipo de embalagem pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -854,7 +854,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Tipo de Embalagem
+        - (Admin) Tipo de Embalagem
       summary: Exclui um Tipo de Embalagem pelo ID
       description: Excluir um tipo de embalagem existente buscando pelo ID
       parameters:
@@ -876,7 +876,7 @@ paths:
   /v1/delicia-gelada/admin/foto:
     post:
       tags:
-        - Foto
+        - (Admin) Foto
       summary: Adiciona uma nova Foto
       description: Adiciona uma nova Foto
       requestBody:
@@ -897,7 +897,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     get:
       tags:
-        - Foto
+        - (Admin) Foto
       summary: Lista todas as Fotos
       description: Listagem de todas as Fotos registradas no sistema
       responses:
@@ -916,7 +916,7 @@ paths:
   /v1/delicia-gelada/admin/foto/:{id}:
     get:
       tags:
-        - Foto
+        - (Admin) Foto
       summary: Busca uma Foto pelo ID
       description: Retorna uma Foto pelo ID
       parameters:
@@ -942,7 +942,7 @@ paths:
           description: Error Internal Server (Controller | Model)
     put:
       tags:
-        - Foto
+        - (Admin) Foto
       summary: Atualiza uma Foto pelo ID
       description: Atualiza uma foto pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -973,7 +973,7 @@ paths:
           description: Error internal server (Controller | Model)    
     delete:
       tags:
-        - Foto
+        - (Admin) Foto
       summary: Exclui uma Foto pelo ID
       description: Excluir uma foto existente buscando pelo ID
       parameters:
@@ -991,6 +991,340 @@ paths:
           description: Error Bad Request (ID)
         '500':
           description: Error Internal Server (Controller | Model)
+
+
+  ############### LANDING PAGE ###############
+
+  /v1/delicia-gelada/bebida:
+    get:
+      tags:
+        - (Landing-Page) Bebida
+      summary: Lista todas as Bebidas
+      description: Listagem de todas as BEBIDAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BebidaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/bebida/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Bebida
+      summary: Busca uma Bebida pelo ID
+      description: Retorna uma Bebida pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Bebida
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BebidaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/categoria:
+    get:
+      tags:
+        - (Landing-Page) Categoria
+      summary: Lista todas as Categorias
+      description: Listagem de todas as CATEGORIAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoriaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/categoria/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Categoria
+      summary: Busca uma Categoria pelo ID
+      description: Retorna uma Categoria pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Categoria
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoriaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/marca:
+    get:
+      tags:
+        - (Landing-Page) Marca
+      summary: Lista todas as Marcas
+      description: Listagem de todas as MARCAS registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarcaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/marca/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Marca
+      summary: Busca uma Marca pelo ID
+      description: Retorna uma Marca pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Marca
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarcaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/sabor:
+    get:
+      tags:
+        - (Landing-Page) Sabor
+      summary: Lista todos os Sabores
+      description: Listagem de todos os Sabores registrados no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SaborGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/sabor/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Sabor
+      summary: Busca um Sabor pelo ID
+      description: Retorna um Sabor pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Sabor
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SaborGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/caracteristica:
+    get:
+      tags:
+        - (Landing-Page) Característica
+      summary: Lista todas as Características
+      description: Listagem de todas as Características registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaracteristicaGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/caracteristica/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Característica
+      summary: Busca uma Característica pelo ID
+      description: Retorna uma Característica pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Característica
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaracteristicaGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/tipo_embalagem:
+    get:
+      tags:
+        - (Landing-Page) Tipo de Embalagem
+      summary: Lista todos os Tipo de Embalagem
+      description: Listagem de todos os Tipo de Embalagem registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TipoEmbalagemGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/tipo_embalagem/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Tipo de Embalagem
+      summary: Busca um Tipo de Embalagem pelo ID
+      description: Retorna um Tipo de Embalagem pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca do Tipo de Embalagem
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TipoEmbalagemGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+  /v1/delicia-gelada/foto:
+    get:
+      tags:
+        - (Landing-Page) Foto
+      summary: Lista todas as Fotos
+      description: Listagem de todas as Fotos registradas no sistema
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FotoGet'  
+        '404':
+          description: Error Not Found
+        '500':
+          description: Error Internal Server (Controller | Model)
+  /v1/delicia-gelada/foto/:{id}:
+    get:
+      tags:
+        - (Landing-Page) Foto
+      summary: Busca uma Foto pelo ID
+      description: Retorna uma Foto pelo ID
+      parameters:
+        - name: id
+          in: path
+          description: ID para realizar a busca da Foto
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FotoGet'          
+        '400':
+          description: Error Bad Request (id)
+        '404':
+          description: Error Not found
+        '500':
+          description: Error Internal Server (Controller | Model)
+
+
 
 components:
   securitySchemes:
@@ -1116,6 +1450,8 @@ components:
           maxLength: 60
 
     Sabor:
+      required:
+        - nome_sabor
       type: object
       properties:
         nome_sabor:
