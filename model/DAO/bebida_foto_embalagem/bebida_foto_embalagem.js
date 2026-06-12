@@ -181,7 +181,7 @@ const deleteBebidaFotoEmbalagem = async function (id) {
     }
 }
 
-const deleteFotoEmbalagemtsByIdBebida = async function (idBebida) {
+const deleteFotoEmbalagensByIdBebida = async function (idBebida) {
     try {
         let sql = `delete from tbl_bebida_foto_embalagem where id_bebida = ${idBebida}`
 
@@ -205,5 +205,5 @@ module.exports = {
     selectBebidasByIdFoto,
     selectBebidasByIdTipoEmbalagem,
     deleteBebidaFotoEmbalagem,
-    deleteFotoEmbalagemtsByIdBebida
+    deleteFotoEmbalagensByIdBebida
 }
