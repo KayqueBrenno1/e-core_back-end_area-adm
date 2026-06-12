@@ -10,7 +10,8 @@ create table tbl_usuario (
 	id 		int not null auto_increment primary key,
     nome 	varchar(30) not null,
     email 	varchar(256) not null,
-    senha 	varchar(512) not null
+    senha 	varchar(512) not null,
+    jwt		varchar(255) not null
 );
 
 ############### TABELAS DE BEBIDA ###############
