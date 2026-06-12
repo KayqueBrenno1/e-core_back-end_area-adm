@@ -13,9 +13,9 @@ const bebidaCaracDAO = require('../../model/DAO/bebida_caracteristica/bebida_car
 const validarDados = async function (bebidaCarac) {
     let customMessages = JSON.parse(JSON.stringify(configMessages))
 
-    if (bebidaCarac.id_bebida == undefined || bebidaCarac.id_bebida == '' || bebidaCarac.id_bebida == null || bebidaCarac.id_bebida < 1 || isNaN(bebidaCarac.id_bebida))
+    if (bebidaCarac.id_bebida == undefined || bebidaCarac.id_bebida == '' || bebidaCarac.id_bebida == null || bebidaCarac.id_bebida.length < 1 || isNaN(bebidaCarac.id_bebida))
         customMessages.ERROR_BAD_REQUEST.field = '[ID_BEBIDA] INVÁLIDO'
-    else if (bebidaCarac.id_caracteristica == undefined || bebidaCarac.id_caracteristica == '' || bebidaCarac.id_caracteristica == null || bebidaCarac.id_caracteristica < 1 || isNaN(bebidaCarac.id_caracteristica))
+    else if (bebidaCarac.id_caracteristica == undefined || bebidaCarac.id_caracteristica == '' || bebidaCarac.id_caracteristica == null || bebidaCarac.id_caracteristica.length < 1 || isNaN(bebidaCarac.id_caracteristica))
         customMessages.ERROR_BAD_REQUEST.field = '[ID_CARACTERISTICA] INVÁLIDO'
     else 
         return false
