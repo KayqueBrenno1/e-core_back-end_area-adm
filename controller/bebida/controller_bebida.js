@@ -12,10 +12,12 @@ const configMessages = require('../modulo/configMessages.js')
 const bebidaDAO = require('../../model/DAO/bebida/bebida.js')
 
 //IMPORT DAS CONTROLLERS
-const controllerCategoria   = require('../categoria/controller_categoria.js')
-const controllerMarca       = require('../marca/controller_marca.js')
-const controllerSabor       = require('../sabor/controller_sabor.js')
-const controllerBebidaCarac = require('./controller_bebida_caracteristica.js')
+const controllerCategoria       = require('../categoria/controller_categoria.js')
+const controllerMarca           = require('../marca/controller_marca.js')
+const controllerSabor           = require('../sabor/controller_sabor.js')
+const controllerBebidaCarac     = require('./controller_bebida_caracteristica.js')
+const controllerBebidaFotoEmb   = require('./controller_bebida_foto_embalagem.js')
+const controllerFoto            = require('../foto/controller_foto.js')
 
 const validarDados = async function (bebida) {
     let customMessages = JSON.parse(JSON.stringify(configMessages))
@@ -75,6 +77,31 @@ const inserirNovaBebida = async function (bebida, contentType) {
                             return customMessages.SUCCESS_CREATED_ITEM_WARNING
                     }
 
+                    for (let itemBebida of bebida.foto_embalagem) {
+                        let foto = {
+                            "foto": itemBebida.foto
+                        }
+
+                        let contentType = 'APPLICATION/JSON'
+                        let resultFoto = await controllerFoto.inserirNovaFoto(foto, contentType)
+
+                        if (!resultFoto.status)
+                            return customMessages.SUCCESS_CREATED_ITEM_WARNING
+
+                        let bebFotoEmb = {
+                            "id_bebida": bebida.id,
+                            "id_foto": resultFoto.response.id,
+                            "id_tipo_embalagem": itemBebida.id_tipo_embalagem,
+                            "valor": itemBebida.valor
+                        }
+
+                        let resultBebFotoEmb = await controllerBebidaFotoEmb
+                                                        .inserirNovaBebidaFotoEmbalagem(bebFotoEmb)
+
+                        if (!resultBebFotoEmb.status)
+                            return customMessages.SUCCESS_CREATED_ITEM_WARNING
+                    }
+
                     customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
                     customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
                     customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
@@ -122,6 +149,36 @@ const atualizarBebida = async function (bebida, id, contentType) {
                                                                 .inserirNovaBebidaCarac(bebidaCaracteristica)
                                 
                                 if (!resultBebidaCarac.status)
+                                    return customMessages.SUCCESS_CREATED_ITEM_WARNING
+                            }
+                        }
+
+                        let resultDeleteFotoEmb = await controllerBebidaFotoEmb
+                                                            .excluirFotoEmbalagemIdBebida(bebida.id)
+
+                        if (resultDeleteFotoEmb.status) {
+                            for (let itemBebida of bebida.foto_embalagem) {
+                                let foto = {
+                                    "foto": itemBebida.foto
+                                }
+        
+                                let contentType = 'APPLICATION/JSON'
+                                let resultFoto = await controllerFoto.inserirNovaFoto(foto, contentType)
+        
+                                if (!resultFoto.status)
+                                    return customMessages.SUCCESS_CREATED_ITEM_WARNING
+        
+                                let bebFotoEmb = {
+                                    "id_bebida": bebida.id,
+                                    "id_foto": resultFoto.response.id,
+                                    "id_tipo_embalagem": itemBebida.id_tipo_embalagem,
+                                    "valor": itemBebida.valor
+                                }
+        
+                                let resultBebFotoEmb = await controllerBebidaFotoEmb
+                                                                .inserirNovaBebidaFotoEmbalagem(bebFotoEmb)
+        
+                                if (!resultBebFotoEmb.status)
                                     return customMessages.SUCCESS_CREATED_ITEM_WARNING
                             }
                         }
@@ -184,6 +241,12 @@ const listarBebida = async function () {
 
                     if (resultBebidaCarac.status)
                         bebida.caracteristica = resultBebidaCarac.response.bebida_caracteristica
+
+                    let resultFotoEmbalagem = await controllerBebidaFotoEmb
+                                                        .buscarFotoEmbalagensIdBebida(bebida.id)
+
+                    if (resultFotoEmbalagem.status)
+                        bebida.foto_embalagem = resultFotoEmbalagem.response.bebida_foto_embalagem
                 }
 
                 customMessages.DEFAULT_MESSAGE.status           = customMessages.SUCCESS_RESPONSE.status
@@ -244,6 +307,12 @@ const buscarBebida = async function (id) {
 
                         if (resultBebidaCarac.status)
                             bebida.caracteristica = resultBebidaCarac.response.bebida_caracteristica
+
+                        let resultFotoEmbalagem = await controllerBebidaFotoEmb
+                                                        .buscarFotoEmbalagensIdBebida(bebida.id)
+
+                        if (resultFotoEmbalagem.status)
+                            bebida.foto_embalagem = resultFotoEmbalagem.response.bebida_foto_embalagem
                     }
 
                     customMessages.DEFAULT_MESSAGE.status           = customMessages.SUCCESS_RESPONSE.status

@@ -20,11 +20,13 @@ const insertBebidaFotoEmbalagem = async function (bebidaFotoEmbalagem) {
         let sql = `insert into tbl_bebida_foto_embalagem (
             id_bebida,
             id_foto,
-            id_tipo_embalagem
+            id_tipo_embalagem,
+            valor
         ) values (
             ${bebidaFotoEmbalagem.id_bebida},
             ${bebidaFotoEmbalagem.id_foto},
-            ${bebidaFotoEmbalagem.id_tipo_embalagem}
+            ${bebidaFotoEmbalagem.id_tipo_embalagem},
+            '${bebidaFotoEmbalagem.valor}'
         );`
 
         let result = await knexConection.raw(sql)
@@ -41,9 +43,10 @@ const insertBebidaFotoEmbalagem = async function (bebidaFotoEmbalagem) {
 const updateBebidaFotoEmbalagem = async function (bebidaFotoEmbalagem) {
     try {
         let sql = `update tbl_bebida_foto_embalagem set
-                        id_bebida       = ${bebidaFotoEmbalagem.id_bebida},
-                        id_foto         = ${bebidaFotoEmbalagem.id_foto},
-                        id_tipo_embalagem    = ${bebidaFotoEmbalagem.id_tipo_embalagem}
+                        id_bebida           = ${bebidaFotoEmbalagem.id_bebida},
+                        id_foto             = ${bebidaFotoEmbalagem.id_foto},
+                        id_tipo_embalagem   = ${bebidaFotoEmbalagem.id_tipo_embalagem},
+                        valor               = ${bebidaFotoEmbalagem.valor}
                     where id = ${bebidaFotoEmbalagem.id};`
 
         let result = await knexConection.raw(sql)
