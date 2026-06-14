@@ -7,6 +7,7 @@ const bodyParserJSON = bodyParser.json()
 const router = express.Router()
 
 const controllerUsuario = require('../controller/usuario/controller_usuario.js')
+const authUser          = require('../middleware/auth.js')
 
 router.post('/', bodyParserJSON, async function (request, response) {
     let dados = request.body
@@ -17,14 +18,14 @@ router.post('/', bodyParserJSON, async function (request, response) {
     response.json(result)
 })
 
-router.get('/', async function (request, response) {
+router.get('/', authUser.verifyToken, async function (request, response) {
     let result = await controllerUsuario.listarUsuario()
 
     response.status(result.status_code)
     response.json(result)
 })
 
-router.get('/:id', async function (request, response) {
+router.get('/:id', authUser.verifyToken, async function (request, response) {
     let id = request.params.id
 
     let result = await controllerUsuario.buscarUsuario(id)
@@ -33,7 +34,7 @@ router.get('/:id', async function (request, response) {
     response.json(result)
 })
 
-router.put('/:id', bodyParserJSON, async function (request, response) {
+router.put('/:id', authUser.verifyToken, bodyParserJSON, async function (request, response) {
     let id = request.params.id
     let dados = request.body
     let contentType = request.headers['content-type']
@@ -44,7 +45,7 @@ router.put('/:id', bodyParserJSON, async function (request, response) {
     response.json(result)
 })
 
-router.delete('/:id', async function (request, response) {
+router.delete('/:id', authUser.verifyToken, async function (request, response) {
     let id = request.params.id
 
     let result = await controllerUsuario.excluirUsuario(id)

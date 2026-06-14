@@ -11,7 +11,9 @@ const verifyToken = async function (request, response, next) {
     if (autenticidadeToken)
         next()
     else
-        return response.status(401).end()
+        return response.status(401).json({
+            message: 'Token inválido ou não informado.'
+        })
 }
 
-module.exports = verifyToken
+module.exports = {verifyToken}

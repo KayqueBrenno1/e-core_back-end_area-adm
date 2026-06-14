@@ -75,7 +75,7 @@ const selectAllUsuario = async function() {
 
 const selectByIdUsuario = async function (id) {
     try {
-        let sql = `select id, nome, email jwt from tbl_usuario where id = ${id};`
+        let sql = `select id, nome, email, jwt from tbl_usuario where id = ${id};`
 
         let result = await knexConection.raw(sql)
         
@@ -126,7 +126,7 @@ const saveTokenUsuario = async function (id, jwt) {
                 jwt = '${jwt}'
             where id = ${id};
         `
-        let result = await knexConnection.raw(sql)
+        let result = await knexConection.raw(sql)
 
         if (result)
             return true

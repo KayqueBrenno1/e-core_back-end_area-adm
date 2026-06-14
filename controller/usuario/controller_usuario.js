@@ -49,10 +49,8 @@ const inserirNovoUsuario = async function (usuario, contentType) {
                 if (result) {
                     delete usuario.senha
 
-                    let tokenUsuario = await jwt.createJWT(usuario.id)
-                    
                     usuario.id = result
-
+                    
                     customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
                     customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
                     customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
@@ -201,15 +199,17 @@ const loginUsuario = async function (usuario, contentType) {
                         if (validarSenha) {
                             delete usuario.senha
 
-                            let resultBuscarID = await buscarUsuario(result[0].id)
+                            let idUser = result[0].id
+
+                            let resultBuscarID = await buscarUsuario(idUser)
 
                             if (resultBuscarID) {
-                                usuario = resultBuscarID.response.usuario
+                                usuario = resultBuscarID.response.usuario[0]
 
-                                let tokenUsuario = await jwt.createJWT(result[0].id)
+                                let tokenUsuario = await jwt.createJWT(idUser)
 
                                 //Atualizar o token no BD
-                                let saveToken = await usuarioDAO.saveTokenUsuario(result[0].id, tokenUsuario)
+                                let saveToken = await usuarioDAO.saveTokenUsuario(usuario.id, tokenUsuario)
 
                                 if (saveToken) {
                                     usuario.jwt = tokenUsuario

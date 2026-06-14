@@ -7,7 +7,7 @@
 
 const jwt = require('jsonwebtoken')
 //Chave secreta para a criação do JWT
-const SECRET = 'ecore2026'
+const SECRET = process.env.JWT_SECRET
 //Tempo para validar o token do JWT (segundos)
 const EXPIRES = 300
 
@@ -22,15 +22,12 @@ const createJWT = async function (payLoad) {
 
 //Validação de autenticação do JWT (Recebe o token para validação)
 const validateJWT = async function (token) {
-    let status = false
-    
-    //Valida a autenticidade do token
-    jwt.verify(token, SECRET, async function (error, decode) {
-        if (!error)
-            status = true
-
-        return status
-    })
+    try {
+        //Valida a autenticidade do token
+        return jwt.verify(token, SECRET)
+    } catch (error) {
+        return false
+    }
 }
 
 module.exports = {
