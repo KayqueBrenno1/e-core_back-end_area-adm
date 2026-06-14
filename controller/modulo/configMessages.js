@@ -34,6 +34,12 @@ const ERROR_NOT_FOUND = {
     message: 'Não foram encontrados dados para retorno'
 }
 
+const ERROR_EMAIL_ALREADY_EXISTS = {
+    status: false,
+    status_code: 409,
+    message: 'O e-mail informado já está cadastrado.'
+}
+
 const ERROR_CONTENT_TYPE = {
     status: false,
     status_code: 415,
@@ -86,6 +92,7 @@ module.exports = {
     ERROR_BAD_REQUEST,
     ERROR_UNAUTHORIZED,
     ERROR_NOT_FOUND,
+    ERROR_EMAIL_ALREADY_EXISTS,
     ERROR_CONTENT_TYPE,
     ERROR_INTERNAL_SERVER_MODEL,
     ERROR_INTERNAL_SERVER_CONTROLLER,

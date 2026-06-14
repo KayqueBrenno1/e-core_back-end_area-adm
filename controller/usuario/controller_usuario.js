@@ -41,23 +41,29 @@ const inserirNovoUsuario = async function (usuario, contentType) {
             if (validar)
                 return validar
             else {
-                usuario.senha = await bcrypt.hash(usuario.senha, 10)
+                let verificarEmail = await usuarioDAO.selectByLoginUsuario(usuario.email)
 
-                let result = await usuarioDAO.insertUsuario(usuario)
+                if (verificarEmail.length > 0)
+                    return customMessages.ERROR_EMAIL_ALREADY_EXISTS
+                else {
+                    usuario.senha = await bcrypt.hash(usuario.senha, 10)
 
-                if (result) {
-                    delete usuario.senha
+                    let result = await usuarioDAO.insertUsuario(usuario)
 
-                    usuario.id = result
-                    
-                    customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
-                    customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
-                    customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
-                    customMessages.DEFAULT_MESSAGE.response     = usuario
+                    if (result) {
+                        delete usuario.senha
 
-                    return customMessages.DEFAULT_MESSAGE
-                } else
-                    return customMessages.ERROR_INTERNAL_SERVER_MODEL
+                        usuario.id = result
+                        
+                        customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
+                        customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
+                        customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
+                        customMessages.DEFAULT_MESSAGE.response     = usuario
+
+                        return customMessages.DEFAULT_MESSAGE
+                    } else
+                        return customMessages.ERROR_INTERNAL_SERVER_MODEL
+                }
             }
         } else
             return customMessages.ERROR_CONTENT_TYPE
@@ -80,22 +86,29 @@ const atualizarUsuario = async function (usuario, id, contentType) {
                     return validar
                 else {
                     usuario.id = Number(id)
+                    
+                    let verificarEmail = await usuarioDAO.selectByLoginUsuario(usuario.email)
 
-                    usuario.senha = await bcrypt.hash(usuario.senha, 10)
+                    if (verificarEmail.length > 0 && verificarEmail[0].id != usuario.id)
+                        return customMessages.ERROR_EMAIL_ALREADY_EXISTS
+                    else {
 
-                    let result = await usuarioDAO.updateUsuario(usuario)
+                        usuario.senha = await bcrypt.hash(usuario.senha, 10)
 
-                    if (result) {
-                        delete usuario.senha
+                        let result = await usuarioDAO.updateUsuario(usuario)
 
-                        customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
-                        customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
-                        customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
-                        customMessages.DEFAULT_MESSAGE.response     = usuario
+                        if (result) {
+                            delete usuario.senha
 
-                        return customMessages.DEFAULT_MESSAGE
-                    } else
-                        return customMessages.ERROR_INTERNAL_SERVER_MODEL
+                            customMessages.DEFAULT_MESSAGE.status       = customMessages.SUCCESS_CREATED_ITEM.status
+                            customMessages.DEFAULT_MESSAGE.status_code  = customMessages.SUCCESS_CREATED_ITEM.status_code
+                            customMessages.DEFAULT_MESSAGE.message      = customMessages.SUCCESS_CREATED_ITEM.message
+                            customMessages.DEFAULT_MESSAGE.response     = usuario
+
+                            return customMessages.DEFAULT_MESSAGE
+                        } else
+                            return customMessages.ERROR_INTERNAL_SERVER_MODEL
+                    }
                 }
             } else
                 return resultBuscarID
