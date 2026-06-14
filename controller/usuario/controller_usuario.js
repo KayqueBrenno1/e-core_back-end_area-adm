@@ -41,8 +41,7 @@ const inserirNovoUsuario = async function (usuario, contentType) {
             if (validar)
                 return validar
             else {
-                const saltRounds = 10
-                usuario.senha = await bcrypt.hash(usuario.senha, saltRounds)
+                usuario.senha = await bcrypt.hash(usuario.senha, 10)
 
                 let result = await usuarioDAO.insertUsuario(usuario)
 
@@ -82,8 +81,7 @@ const atualizarUsuario = async function (usuario, id, contentType) {
                 else {
                     usuario.id = Number(id)
 
-                    const saltRounds = 10
-                    usuario.senha = await bcrypt.hash(usuario.senha, saltRounds)
+                    usuario.senha = await bcrypt.hash(usuario.senha, 10)
 
                     let result = await usuarioDAO.updateUsuario(usuario)
 
