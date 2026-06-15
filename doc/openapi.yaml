@@ -20,6 +20,9 @@ paths:
     post:
       tags:
         - (Admin) Usuário
+      security:
+        - bearerAuth: []
+      
       summary: Adiciona um novo Usuario
       description: Adiciona um novo Usuario
       requestBody:
@@ -34,6 +37,8 @@ paths:
           description: Success Created Item
         '400':
           description: Error Bad Request
+        '409':
+          description: Error Conflict
         '415':
           description: Error Content Type
         '500':
@@ -41,6 +46,8 @@ paths:
     get:
       tags:
         - (Admin) Usuário
+      security:
+        - bearerAuth: []
       summary: Lista todos os Usuarios
       description: Listagem de todos os USUARIOS registrados no sistema
       responses:
@@ -60,6 +67,8 @@ paths:
     get:
       tags:
         - (Admin) Usuário
+      security:
+        - bearerAuth: []
       summary: Busca um Usuário pelo ID
       description: Retorna um Usuário pelo ID
       parameters:
@@ -86,6 +95,8 @@ paths:
     put:
       tags:
         - (Admin) Usuário
+      security:
+        - bearerAuth: []
       summary: Atualiza um usuario pelo ID
       description: Atualiza um usuário pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -110,6 +121,8 @@ paths:
           description: Error Bad Request (id | dados)
         '404':
           description: Error Not Found
+        '409':
+          description: Error Conflict
         '415':
           description: Error Content Type
         '500':
@@ -117,6 +130,8 @@ paths:
     delete:
       tags:
         - (Admin) Usuário
+      security:
+        - bearerAuth: []
       summary: Exclui um Usuário pelo ID
       description: Excluir um Usuário existente buscando pelo ID
       parameters:
@@ -163,6 +178,8 @@ paths:
     post:
       tags:
         - (Admin) Bebida
+      security:
+        - bearerAuth: []
       summary: Adiciona uma nova Bebida
       description: Adiciona uma nova Bebida
       requestBody:
@@ -229,6 +246,8 @@ paths:
     put:
       tags:
         - (Admin) Bebida
+      security:
+        - bearerAuth: []
       summary: Atualiza uma bebida pelo ID
       description: Atualiza uma bebida pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -260,6 +279,8 @@ paths:
     delete:
       tags:
         - (Admin) Bebida
+      security:
+        - bearerAuth: []
       summary: Exclui uma Bebida pelo ID
       description: Excluir uma Bebida existente buscando pelo ID
       parameters:
@@ -282,6 +303,8 @@ paths:
     post:
       tags:
         - (Admin) Categoria
+      security:
+        - bearerAuth: []
       summary: Adiciona uma nova Categoria
       description: Adiciona uma nova Categoria
       requestBody:
@@ -348,6 +371,8 @@ paths:
     put:
       tags:
         - (Admin) Categoria
+      security:
+        - bearerAuth: []
       summary: Atualiza uma categoria pelo ID
       description: Atualiza uma categoria pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -379,6 +404,8 @@ paths:
     delete:
       tags:
         - (Admin) Categoria
+      security:
+        - bearerAuth: []
       summary: Exclui uma Categoria pelo ID
       description: Excluir uma Categoria existente buscando pelo ID
       parameters:
@@ -401,6 +428,8 @@ paths:
     post:
       tags:
         - (Admin) Marca
+      security:
+        - bearerAuth: []
       summary: Adiciona uma nova Marca
       description: Adiciona uma nova Marca
       requestBody:
@@ -467,6 +496,8 @@ paths:
     put:
       tags:
         - (Admin) Marca
+      security:
+        - bearerAuth: []
       summary: Atualiza uma marca pelo ID
       description: Atualiza uma marca pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -498,6 +529,8 @@ paths:
     delete:
       tags:
         - (Admin) Marca
+      security:
+        - bearerAuth: []
       summary: Exclui uma Marca pelo ID
       description: Excluir uma Marca existente buscando pelo ID
       parameters:
@@ -520,6 +553,8 @@ paths:
     post:
       tags:
         - (Admin) Sabor
+      security:
+        - bearerAuth: []
       summary: Adiciona um novo Sabor
       description: Adiciona um novo Sabor
       requestBody:
@@ -586,6 +621,8 @@ paths:
     put:
       tags:
         - (Admin) Sabor
+      security:
+        - bearerAuth: []
       summary: Atualiza um Sabor pelo ID
       description: Atualiza um sabor pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -617,6 +654,8 @@ paths:
     delete:
       tags:
         - (Admin) Sabor
+      security:
+        - bearerAuth: []
       summary: Exclui um Sabor pelo ID
       description: Excluir um sabor existente buscando pelo ID
       parameters:
@@ -639,6 +678,8 @@ paths:
     post:
       tags:
         - (Admin) Característica
+      security:
+        - bearerAuth: []
       summary: Adiciona uma nova Característica
       description: Adiciona uma nova Característica
       requestBody:
@@ -705,6 +746,8 @@ paths:
     put:
       tags:
         - (Admin) Característica
+      security:
+        - bearerAuth: []
       summary: Atualiza uma Característica pelo ID
       description: Atualiza uma característica pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -736,6 +779,8 @@ paths:
     delete:
       tags:
         - (Admin) Característica
+      security:
+        - bearerAuth: []
       summary: Exclui uma Característica pelo ID
       description: Excluir uma característica existente buscando pelo ID
       parameters:
@@ -758,6 +803,8 @@ paths:
     post:
       tags:
         - (Admin) Tipo de Embalagem
+      security:
+        - bearerAuth: []
       summary: Adiciona um novo Tipo de Embalagem
       description: Adiciona um novo Tipo de Embalagem
       requestBody:
@@ -824,6 +871,8 @@ paths:
     put:
       tags:
         - (Admin) Tipo de Embalagem
+      security:
+        - bearerAuth: []
       summary: Atualiza um Tipo de Embalagem pelo ID
       description: Atualiza um tipo de embalagem pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -855,6 +904,8 @@ paths:
     delete:
       tags:
         - (Admin) Tipo de Embalagem
+      security:
+        - bearerAuth: []
       summary: Exclui um Tipo de Embalagem pelo ID
       description: Excluir um tipo de embalagem existente buscando pelo ID
       parameters:
@@ -877,6 +928,8 @@ paths:
     post:
       tags:
         - (Admin) Foto
+      security:
+        - bearerAuth: []
       summary: Adiciona uma nova Foto
       description: Adiciona uma nova Foto
       requestBody:
@@ -943,6 +996,8 @@ paths:
     put:
       tags:
         - (Admin) Foto
+      security:
+        - bearerAuth: []
       summary: Atualiza uma Foto pelo ID
       description: Atualiza uma foto pelo ID colocando as informações da mesma forma que o POST
       parameters:
@@ -974,6 +1029,8 @@ paths:
     delete:
       tags:
         - (Admin) Foto
+      security:
+        - bearerAuth: []
       summary: Exclui uma Foto pelo ID
       description: Excluir uma foto existente buscando pelo ID
       parameters:

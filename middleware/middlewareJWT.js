@@ -23,8 +23,10 @@ const createJWT = async function (payLoad) {
 //Validação de autenticação do JWT (Recebe o token para validação)
 const validateJWT = async function (token) {
     try {
+        let clsToken = String(token).replace('Bearer ', '')
+
         //Valida a autenticidade do token
-        return jwt.verify(token, SECRET)
+        return jwt.verify(clsToken, SECRET)
     } catch (error) {
         return false
     }

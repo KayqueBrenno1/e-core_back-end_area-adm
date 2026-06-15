@@ -3,7 +3,7 @@ const jwt = require('./middlewareJWT.js')
 
 //Receber o token encaminhado nas requisições e solicitar a validação
 const verifyToken = async function (request, response, next) {
-    let token = request.headers['x-access-token']
+    let token = request.headers.authorization
 
     const autenticidadeToken = await jwt.validateJWT(token)
 
