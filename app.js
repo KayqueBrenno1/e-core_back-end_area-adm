@@ -4,6 +4,8 @@ require('dotenv').config()
 //IMPORT DAS DEPENDENDIAS
 const express = require('express')
 const cors = require('cors')
+const swaggerUI = require('swagger-ui-express')
+const YAML = require('yamljs')
 
 //CRIANDO UM OBJETO DO EXPRESS PARA CRIAR A API
 const app = express()
@@ -42,6 +44,9 @@ app.use('/v1/delicia-gelada/admin/caracteristica', cors(), caracteristicaRouter)
 
 const tipoEmbalagemRouter = require('./routes/tipo_embalagem.router.js')
 app.use('/v1/delicia-gelada/admin/tipo_embalagem', cors(), tipoEmbalagemRouter)
+
+const swaggerDocument = YAML.load('./doc/openapi.yaml')
+app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 //Fazer o start da API
 app.listen(8080, function () {
