@@ -1,3 +1,10 @@
+/* 
+    Objetivo: Arquivo responsável pela verificação do TOKEN
+    data: 16/06/2026
+    Autor: Kayque Brenno Ferreira Almeida
+    Versão: 1.0
+*/
+
 //Import da biblioteca JWT
 const jwt = require('./middlewareJWT.js')
 

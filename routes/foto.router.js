@@ -1,3 +1,11 @@
+/* 
+    Objetivo: Arquivo responsável pela ROTA
+    data: 11/06/2026
+    Autor: Kayque Brenno Ferreira Almeida
+    Versão: 1.0
+*/
+
+
 const express = require('express')
 const bodyParser = require('body-parser')
 
@@ -7,8 +15,9 @@ const bodyParserJSON = bodyParser.json()
 const router = express.Router()
 
 const controllerFoto = require('../controller/foto/controller_foto.js')
+const authUser = require('../middleware/auth.js')
 
-router.post('/', bodyParserJSON, async function (request, response) {
+router.post('/', authUser.verifyToken, bodyParserJSON, async function (request, response) {
     let dados = request.body
     let contentType = request.headers['content-type']
 
@@ -34,7 +43,7 @@ router.get('/:id', async function (request, response) {
     response.json(result)
 })
 
-router.put('/:id', bodyParserJSON, async function (request, response) {
+router.put('/:id', authUser.verifyToken, bodyParserJSON, async function (request, response) {
     let id = request.params.id
     let dados = request.body
     let contentType = request.headers['content-type']
@@ -45,7 +54,7 @@ router.put('/:id', bodyParserJSON, async function (request, response) {
     response.json(result)
 })
 
-router.delete('/:id', async function (request, response) {
+router.delete('/:id', authUser.verifyToken, async function (request, response) {
     let id = request.params.id
 
     let result = await controllerFoto.excluirFoto(id)

@@ -1,3 +1,10 @@
+/* 
+    Objetivo: Arquivo responsável pela ROTA
+    data: 11/06/2026
+    Autor: Kayque Brenno Ferreira Almeida
+    Versão: 1.0
+*/
+
 const express = require('express')
 const bodyParser = require('body-parser')
 
@@ -8,8 +15,9 @@ const router = express.Router()
 
 const controllerUsuario = require('../controller/usuario/controller_usuario.js')
 const authUser          = require('../middleware/auth.js')
-
-router.post('/', bodyParserJSON, async function (request, response) {
+const bootstrap         = require('../middleware/bootstrap.js')
+       
+router.post('/', bootstrap.bootstrap, bodyParserJSON, async function (request, response) {
     let dados = request.body
     let contentType = request.headers['content-type']
 
