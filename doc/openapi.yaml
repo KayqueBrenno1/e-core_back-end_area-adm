@@ -164,7 +164,7 @@ paths:
         required: true
       responses:
         '201':
-          description: Success Created Item
+          description: Ok
         '400':
           description: Error Bad Request
         '401':
