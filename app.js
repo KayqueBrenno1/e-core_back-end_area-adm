@@ -12,7 +12,7 @@ const app = express()
 
 //CONFIGURAÇÕES DO CORS
 const corsOptions = {
-    origin: ['*'], //Configuração de origem da requisição (IP ou Dominio)
+    origin: '*', //Configuração de origem da requisição (IP ou Dominio)
     methods: 'GET, POST, PUT, DELETE, OPTIONS', //Configuração dos verbos que serão utilizados na API
     allowedHeaders: ['Content-type', 'Authorization', 'x-access-token'] //Configurações de permissões
                     //Tipo de dados  //Autorização de acesso
