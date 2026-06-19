@@ -1475,10 +1475,10 @@ components:
                 type: number
                 format: double
             example:
-              - id_foto: 1
+              - foto: "coca_lata.png"
                 id_tipo_embalagem: 1
                 valor: 3.50
-              - id_foto: 2
+              - foto: "coquinha.png"
                 id_tipo_embalagem: 2
                 valor: 7.00
 
